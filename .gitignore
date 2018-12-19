@@ -1,0 +1,23 @@
+.gradle
+.DS_Store
+/build/
+build/**/*
+\build\**\*
+classes/
+classes
+.gradle
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+out
+
+### Zipped archives ###
+*.tar
+*.jar
+
+### Don't ignore ###
+!gradle-wrapper.jar
