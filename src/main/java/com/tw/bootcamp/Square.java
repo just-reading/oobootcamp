@@ -1,9 +1,23 @@
 package com.tw.bootcamp;
 
-public class Square extends Rectangle {
-  private int width;
+public class Square implements AreaComputable {
 
-  public Square(int width) {
-    super(width, width);
+  private double width;
+
+  public Square(double width) {
+    this.width = width;
+  }
+
+  @Override
+  public double getArea() {
+    return width * width;
+  }
+
+  public double getWidth() {
+    return width;
+  }
+
+  public void setWidth(double width) {
+    this.width = width;
   }
 }

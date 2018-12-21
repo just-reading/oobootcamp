@@ -1,6 +1,7 @@
 package com.tw.bootcamp;
 
-public class Rectangle {
+public class Rectangle implements AreaComputable {
+
   private double width;
   private double length;
 
@@ -9,24 +10,24 @@ public class Rectangle {
     this.length = length;
   }
 
-  public double getWidth() {
-    return width;
+  public double getArea() {
+    return this.length * this.width;
   }
 
-  public void setWidth(double width) {
-    this.width = width;
+  public double getWidth() {
+    return width;
   }
 
   public double getLength() {
     return length;
   }
 
-  public void setLength(double length) {
-    this.length = length;
+  public void setWidth(double width) {
+    this.width = width;
   }
 
-  public double getArea() {
-    return this.length * this.width;
+  public void setLength(double length) {
+    this.length = length;
   }
 
   public void increaseWidth() {
