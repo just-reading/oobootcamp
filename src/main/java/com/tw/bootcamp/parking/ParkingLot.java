@@ -24,6 +24,9 @@ public class ParkingLot {
   }
 
   public Car out(ParkingTicket parkingTicket) {
-    return cars.get(parkingTicket);
+    if (cars.containsKey(parkingTicket)) {
+      return cars.remove(parkingTicket);
+    }
+    throw new InvalidTicketException();
   }
 }
