@@ -14,7 +14,7 @@ public class ParkingLot {
     this.cars = new HashMap<>(maxSpace);
   }
 
-  public ParkingTicket in(Car car) {
+  public ParkingTicket park(Car car) {
     if (cars.size() >= maxSpace) {
       throw new ParkingLotIsFullException();
     }
@@ -23,7 +23,7 @@ public class ParkingLot {
     return parkingTicket;
   }
 
-  public Car out(ParkingTicket parkingTicket) {
+  public Car pickCar(ParkingTicket parkingTicket) {
     if (cars.containsKey(parkingTicket)) {
       return cars.remove(parkingTicket);
     }
