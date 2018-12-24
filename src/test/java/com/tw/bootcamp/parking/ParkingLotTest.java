@@ -3,6 +3,7 @@ package com.tw.bootcamp.parking;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ParkingLotTest {
 
@@ -19,7 +20,7 @@ class ParkingLotTest {
     ParkingLot parkingLot = new ParkingLot(1);
     parkingLot.in(new Car());
 
-    assertThrows(ParkingLotIsFullException.class, parkingLot.in(new Car()));
+    assertThrows(ParkingLotIsFullException.class, () -> parkingLot.in(new Car()));
   }
 
 }
