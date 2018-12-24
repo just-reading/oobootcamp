@@ -47,4 +47,13 @@ class ParkingLotTest {
     assertEquals(myCar, pickedCar);
   }
 
+  @Test
+  void shouldThrowInvalidTicketExceptionWhenPickCarTwiceGivenOneParkingTicket(){
+    ParkingLot parkingLot = new ParkingLot(1);
+    ParkingTicket ticket = parkingLot.in(new Car());
+    parkingLot.out(ticket);
+
+    assertThrows(InvalidTicketException.class,() -> parkingLot.out(ticket));
+  }
+
 }
