@@ -13,4 +13,13 @@ class ParkingLotTest {
 
     assertNotNull(ticket);
   }
+
+  @Test
+  void shouldThrowParkingLotIsFullExceptionWhenParkACarGivenParkingLotHasNoEmptySpace() {
+    ParkingLot parkingLot = new ParkingLot(1);
+    parkingLot.in(new Car());
+
+    assertThrows(ParkingLotIsFullException.class, parkingLot.in(new Car()));
+  }
+
 }
