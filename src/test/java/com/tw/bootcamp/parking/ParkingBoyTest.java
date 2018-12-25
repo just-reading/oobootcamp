@@ -61,4 +61,14 @@ class ParkingBoyTest {
     assertThrows(ParkingLotIsFullException.class, () -> parkingBoy.park(new Car()));
   }
 
+  @Test
+  void shouldReturnParkedCarWhenPickACarGivenParkingBoyHasOneParkingLotAndHasBeenParkedTheCar() {
+    ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
+    Car myCar = new Car();
+    ParkingTicket ticket = parkingBoy.park(myCar);
+
+    Car parkedCar = parkingBoy.pickCar(ticket);
+
+    assertSame(myCar, parkedCar);
+  }
 }

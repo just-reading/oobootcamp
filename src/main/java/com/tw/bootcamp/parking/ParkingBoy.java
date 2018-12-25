@@ -23,4 +23,11 @@ public class ParkingBoy {
     }
     throw new ParkingLotIsFullException();
   }
+
+  public Car pickCar(ParkingTicket ticket) {
+    for (ParkingLot parkingLot : parkingLots) {
+      return parkingLot.pickCar(ticket);
+    }
+    return null;
+  }
 }
