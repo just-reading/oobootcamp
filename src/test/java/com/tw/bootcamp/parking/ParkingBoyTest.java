@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ParkingBoyTest {
+class ParkingBoyTest {
 
   @Test
   void shouldReturnTicketWhenParkACarGivenParkingBoyHasOneEmptySpace() {
@@ -33,7 +34,7 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void shouldReturnTicketWhenParkACarGivenParkingBoyHasTwoParkingLotAndOneIsFullOtherIsEmpty(){
+  void shouldReturnTicketWhenParkACarGivenParkingBoyHasTwoParkingLotAndOneIsFullOtherIsEmpty() {
     ParkingLot firstParkingLot = new ParkingLot(1);
     ParkingLot secondParkingLot = new ParkingLot(1);
     firstParkingLot.park(new Car());
@@ -46,4 +47,18 @@ public class ParkingBoyTest {
     assertNotNull(ticket);
     assertSame(myCar, secondParkingLot.pickCar(ticket));
   }
+
+
+  @Test
+  void shouldThrowParkingLotIsFullExceptionWhenParkACarGivenParkingBoyHasTwoParkingLotAndAllOfThemIsFull() {
+    ParkingLot firstParkingLot = new ParkingLot(1);
+    ParkingLot secondParkingLot = new ParkingLot(1);
+    firstParkingLot.park(new Car());
+    secondParkingLot.park(new Car());
+    List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+    assertThrows(ParkingLotIsFullException.class, () -> parkingBoy.park(new Car()));
+  }
+
 }

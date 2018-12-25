@@ -21,6 +21,6 @@ public class ParkingBoy {
         return parkingLot.park(car);
       }
     }
-    return null;
+    throw new ParkingLotIsFullException();
   }
 }
