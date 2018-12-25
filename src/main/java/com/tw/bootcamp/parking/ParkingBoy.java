@@ -16,6 +16,11 @@ public class ParkingBoy {
   }
 
   public ParkingTicket park(Car car) {
-    return parkingLots.get(0).park(car);
+    for (ParkingLot parkingLot : parkingLots) {
+      if (!parkingLot.isFull()) {
+        return parkingLot.park(car);
+      }
+    }
+    return null;
   }
 }

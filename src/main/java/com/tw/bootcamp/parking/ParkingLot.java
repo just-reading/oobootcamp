@@ -29,4 +29,8 @@ public class ParkingLot {
     }
     throw new InvalidTicketException();
   }
+
+  public boolean isFull() {
+    return cars.size() >= maxSpace;
+  }
 }

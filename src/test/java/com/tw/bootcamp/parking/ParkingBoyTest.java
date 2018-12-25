@@ -31,4 +31,19 @@ public class ParkingBoyTest {
     assertNotNull(ticket);
     assertSame(myCar, firstParkingLot.pickCar(ticket));
   }
+
+  @Test
+  void shouldReturnTicketWhenParkACarGivenParkingBoyHasTwoParkingLotAndOneIsFullOtherIsEmpty(){
+    ParkingLot firstParkingLot = new ParkingLot(1);
+    ParkingLot secondParkingLot = new ParkingLot(1);
+    firstParkingLot.park(new Car());
+    List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+    Car myCar = new Car();
+    ParkingTicket ticket = parkingBoy.park(myCar);
+
+    assertNotNull(ticket);
+    assertSame(myCar, secondParkingLot.pickCar(ticket));
+  }
 }
