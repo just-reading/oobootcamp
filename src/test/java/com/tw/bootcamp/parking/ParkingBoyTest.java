@@ -85,4 +85,14 @@ class ParkingBoyTest {
     Car pickedCar = parkingBoy.pickCar(parkingTicket);
     assertSame(myCar, pickedCar);
   }
+
+
+  @Test
+  void shouldThrowInvalidTicketExceptionWhenPickACarGivenParkingBoyHasOneEmptyParkingLot() {
+    ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
+
+    assertThrows(InvalidTicketException.class, () -> parkingBoy.pickCar(new ParkingTicket()));
+  }
+
+
 }

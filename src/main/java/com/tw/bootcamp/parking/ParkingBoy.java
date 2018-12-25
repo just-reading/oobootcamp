@@ -26,10 +26,10 @@ public class ParkingBoy {
 
   public Car pickCar(ParkingTicket ticket) {
     for (ParkingLot parkingLot : parkingLots) {
-      if(parkingLot.hasCar(ticket)){
+      if (parkingLot.hasCar(ticket)) {
         return parkingLot.pickCar(ticket);
       }
     }
-    return null;
+    throw new InvalidTicketException();
   }
 }
