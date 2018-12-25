@@ -26,7 +26,9 @@ public class ParkingBoy {
 
   public Car pickCar(ParkingTicket ticket) {
     for (ParkingLot parkingLot : parkingLots) {
-      return parkingLot.pickCar(ticket);
+      if(parkingLot.hasCar(ticket)){
+        return parkingLot.pickCar(ticket);
+      }
     }
     return null;
   }

@@ -30,6 +30,10 @@ public class ParkingLot {
     throw new InvalidTicketException();
   }
 
+  public boolean hasCar(ParkingTicket ticket) {
+    return cars.containsKey(ticket);
+  }
+
   public boolean isFull() {
     return cars.size() >= maxSpace;
   }

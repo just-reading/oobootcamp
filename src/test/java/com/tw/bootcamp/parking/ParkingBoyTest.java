@@ -71,4 +71,18 @@ class ParkingBoyTest {
 
     assertSame(myCar, parkedCar);
   }
+
+  @Test
+  void shouldReturnParkedCarWhenPickACarGivenParkingBoyHasTwoParkingLotAndTheCarParkedInSecondParkingLot() {
+    ParkingLot firstParkingLot = new ParkingLot(1);
+    ParkingLot secondParkingLot = new ParkingLot(1);
+    List<ParkingLot> parkingLots = Arrays.asList(firstParkingLot, secondParkingLot);
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+    parkingBoy.park(new Car());
+    Car myCar = new Car();
+    ParkingTicket parkingTicket = parkingBoy.park(myCar);
+
+    Car pickedCar = parkingBoy.pickCar(parkingTicket);
+    assertSame(myCar, pickedCar);
+  }
 }
