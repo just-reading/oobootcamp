@@ -23,14 +23,14 @@ public class ParkingLot {
     return parkingTicket;
   }
 
-  public Car pickCar(ParkingTicket parkingTicket) {
+  public Car pick(ParkingTicket parkingTicket) {
     if (cars.containsKey(parkingTicket)) {
       return cars.remove(parkingTicket);
     }
     throw new InvalidTicketException();
   }
 
-  public boolean hasCar(ParkingTicket ticket) {
+  public boolean contains(ParkingTicket ticket) {
     return cars.containsKey(ticket);
   }
 

@@ -30,7 +30,7 @@ class ParkingBoyTest {
     ParkingTicket ticket = parkingBoy.park(myCar);
 
     assertNotNull(ticket);
-    assertSame(myCar, firstParkingLot.pickCar(ticket));
+    assertSame(myCar, firstParkingLot.pick(ticket));
   }
 
   @Test
@@ -45,7 +45,7 @@ class ParkingBoyTest {
     ParkingTicket ticket = parkingBoy.park(myCar);
 
     assertNotNull(ticket);
-    assertSame(myCar, secondParkingLot.pickCar(ticket));
+    assertSame(myCar, secondParkingLot.pick(ticket));
   }
 
 
@@ -67,7 +67,7 @@ class ParkingBoyTest {
     Car myCar = new Car();
     ParkingTicket ticket = parkingBoy.park(myCar);
 
-    Car parkedCar = parkingBoy.pickCar(ticket);
+    Car parkedCar = parkingBoy.pick(ticket);
 
     assertSame(myCar, parkedCar);
   }
@@ -82,7 +82,7 @@ class ParkingBoyTest {
     Car myCar = new Car();
     ParkingTicket parkingTicket = parkingBoy.park(myCar);
 
-    Car pickedCar = parkingBoy.pickCar(parkingTicket);
+    Car pickedCar = parkingBoy.pick(parkingTicket);
     assertSame(myCar, pickedCar);
   }
 
@@ -91,7 +91,7 @@ class ParkingBoyTest {
   void shouldThrowInvalidTicketExceptionWhenPickACarGivenParkingBoyHasOneEmptyParkingLot() {
     ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
 
-    assertThrows(InvalidTicketException.class, () -> parkingBoy.pickCar(new ParkingTicket()));
+    assertThrows(InvalidTicketException.class, () -> parkingBoy.pick(new ParkingTicket()));
   }
 
 

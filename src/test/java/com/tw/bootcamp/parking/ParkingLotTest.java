@@ -31,7 +31,7 @@ class ParkingLotTest {
     Car myCar = new Car();
     ParkingTicket ticket = parkingLot.park(myCar);
 
-    Car pickedCar = parkingLot.pickCar(ticket);
+    Car pickedCar = parkingLot.pick(ticket);
 
     assertSame(myCar, pickedCar);
   }
@@ -43,7 +43,7 @@ class ParkingLotTest {
     Car myCar = new Car();
     ParkingTicket ticket = parkingLot.park(myCar);
 
-    Car pickedCar = parkingLot.pickCar(ticket);
+    Car pickedCar = parkingLot.pick(ticket);
 
     assertSame(myCar, pickedCar);
   }
@@ -52,9 +52,9 @@ class ParkingLotTest {
   void shouldThrowInvalidTicketExceptionWhenPickCarTwiceGivenOneParkingTicket() {
     ParkingLot parkingLot = new ParkingLot(1);
     ParkingTicket ticket = parkingLot.park(new Car());
-    parkingLot.pickCar(ticket);
+    parkingLot.pick(ticket);
 
-    assertThrows(InvalidTicketException.class, () -> parkingLot.pickCar(ticket));
+    assertThrows(InvalidTicketException.class, () -> parkingLot.pick(ticket));
   }
 
 }

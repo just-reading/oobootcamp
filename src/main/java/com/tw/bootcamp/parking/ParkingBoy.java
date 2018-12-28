@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ParkingBoy {
 
-  private List<ParkingLot> parkingLots;
+  protected List<ParkingLot> parkingLots;
 
   public ParkingBoy(ParkingLot parkingLot) {
     this.parkingLots = Collections.singletonList(parkingLot);
@@ -24,10 +24,10 @@ public class ParkingBoy {
     throw new ParkingLotIsFullException();
   }
 
-  public Car pickCar(ParkingTicket ticket) {
+  public Car pick(ParkingTicket ticket) {
     for (ParkingLot parkingLot : parkingLots) {
-      if (parkingLot.hasCar(ticket)) {
-        return parkingLot.pickCar(ticket);
+      if (parkingLot.contains(ticket)) {
+        return parkingLot.pick(ticket);
       }
     }
     throw new InvalidTicketException();
