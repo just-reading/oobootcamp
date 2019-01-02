@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SmartParkingBoyTest {
+class SmartParkingBoyTest {
 
   @Test
   void shouldReturnTicketWhenParkACarGivenSmartParkingBoyHasTwoParkingLotAndTheyHaveTheSameParkingSpace() {
@@ -61,6 +61,18 @@ public class SmartParkingBoyTest {
     Car myCar = new Car();
 
     ParkingTicket parkingTicket = parkingBoy.park(myCar);
+
+    assertSame(myCar, parkingBoy.pick(parkingTicket));
+  }
+
+  @Test
+  void shouldReturnParkedCarWhenPickACarGivenSmartParkingBoyHasTwoParkingLotAndHasBeenParkedTheCarToSecondParkingLot() {
+    ParkingLot firstParkingLot = new ParkingLot(1);
+    ParkingLot secondParkingLot = new ParkingLot(1);
+    Car myCar = new Car();
+    ParkingTicket parkingTicket = secondParkingLot.park(myCar);
+
+    SuperBoy parkingBoy = new SmartParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
 
     assertSame(myCar, parkingBoy.pick(parkingTicket));
   }
