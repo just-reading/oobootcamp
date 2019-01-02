@@ -77,4 +77,11 @@ class SmartParkingBoyTest {
     assertSame(myCar, parkingBoy.pick(parkingTicket));
   }
 
+  @Test
+  void shouldThrowInvalidTicketExceptionWhenPickACarGivenSmartParkingBoyHasOneParkingLot() {
+    SuperBoy parkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(1)));
+
+    assertThrows(InvalidTicketException.class, () -> parkingBoy.pick(new ParkingTicket()));
+  }
+
 }
