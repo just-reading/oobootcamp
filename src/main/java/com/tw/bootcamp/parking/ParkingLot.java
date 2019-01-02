@@ -37,4 +37,8 @@ public class ParkingLot {
   public boolean isFull() {
     return cars.size() >= maxSpace;
   }
+
+  public int getAvailableSpaces() {
+    return maxSpace - cars.size();
+  }
 }

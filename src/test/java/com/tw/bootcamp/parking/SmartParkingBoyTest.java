@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SmartParkingBoyTest {
 
@@ -13,7 +14,7 @@ public class SmartParkingBoyTest {
     ParkingLot firstParkingLot = new ParkingLot(1);
     ParkingLot secondParkingLot = new ParkingLot(1);
 
-    ParkingBoy parkingBoy = new SmartParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
+    SuperBoy parkingBoy = new SmartParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
 
     Car myCar = new Car();
 
@@ -22,4 +23,20 @@ public class SmartParkingBoyTest {
     assertNotNull(parkingTicket);
     assertSame(myCar, firstParkingLot.pick(parkingTicket));
   }
+
+  @Test
+  void shouldReturnTicketWhenParkACarGivenSmartParkingBoyHasTwoParkingLotAndTheSecondParkingLotHasMoreParkingSpace() {
+    ParkingLot firstParkingLot = new ParkingLot(1);
+    ParkingLot secondParkingLot = new ParkingLot(2);
+
+    SuperBoy parkingBoy = new SmartParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
+
+    Car myCar = new Car();
+
+    ParkingTicket parkingTicket = parkingBoy.park(myCar);
+
+    assertNotNull(parkingTicket);
+    assertSame(myCar, secondParkingLot.pick(parkingTicket));
+  }
+
 }
