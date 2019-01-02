@@ -1,6 +1,7 @@
 package com.tw.bootcamp.parking;
 
 import java.util.Arrays;
+import java.util.Collections;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -40,7 +41,7 @@ public class SmartParkingBoyTest {
   }
 
   @Test
-  void shouldReturnTicketWhenParkACarGivenSmartParkingBoyHasTwoParkingLotAndAllParkingLotsHasNoParkingSpace() {
+  void shouldThrowParkingLotIsFullExceptionWhenParkACarGivenSmartParkingBoyHasTwoParkingLotAndAllParkingLotsHasNoParkingSpace() {
     ParkingLot firstParkingLot = new ParkingLot(1);
     ParkingLot secondParkingLot = new ParkingLot(1);
 
@@ -51,4 +52,17 @@ public class SmartParkingBoyTest {
 
     assertThrows(ParkingLotIsFullException.class, () -> parkingBoy.park(new Car()));
   }
+
+  @Test
+  void shouldReturnParkedCarWhenPickACarGivenSmartParkingBoyHasOneParkingLotAndHasBeenParkedTheCar() {
+
+    SuperBoy parkingBoy = new SmartParkingBoy(Collections.singletonList(new ParkingLot(1)));
+
+    Car myCar = new Car();
+
+    ParkingTicket parkingTicket = parkingBoy.park(myCar);
+
+    assertSame(myCar, parkingBoy.pick(parkingTicket));
+  }
+
 }
