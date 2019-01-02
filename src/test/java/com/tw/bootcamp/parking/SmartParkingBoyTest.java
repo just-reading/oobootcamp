@@ -39,4 +39,16 @@ public class SmartParkingBoyTest {
     assertSame(myCar, secondParkingLot.pick(parkingTicket));
   }
 
+  @Test
+  void shouldReturnTicketWhenParkACarGivenSmartParkingBoyHasTwoParkingLotAndAllParkingLotsHasNoParkingSpace() {
+    ParkingLot firstParkingLot = new ParkingLot(1);
+    ParkingLot secondParkingLot = new ParkingLot(1);
+
+    firstParkingLot.park(new Car());
+    secondParkingLot.park(new Car());
+
+    SuperBoy parkingBoy = new SmartParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
+
+    assertThrows(ParkingLotIsFullException.class, () -> parkingBoy.park(new Car()));
+  }
 }

@@ -14,10 +14,7 @@ public class SmartParkingBoy extends SuperBoy {
     ParkingLot parkingLotHasMaxAvailableSpaces = parkingLots.stream()
         .filter(parkingLot -> !parkingLot.isFull())
         .max(Comparator.comparing(ParkingLot::getAvailableSpaces))
-        .orElse(null);
-    if (parkingLotHasMaxAvailableSpaces != null) {
-      return parkingLotHasMaxAvailableSpaces.park(car);
-    }
-    return null;
+        .orElseThrow(ParkingLotIsFullException::new);
+    return parkingLotHasMaxAvailableSpaces.park(car);
   }
 }
